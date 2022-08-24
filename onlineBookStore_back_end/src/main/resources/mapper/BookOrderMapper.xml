@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.onlinebookstore.dao.BookOrderMapper" >
+    <insert id="saveOrder" parameterType="BookOrder">
+        insert into book_order(user,total,time,detail,state) values (#{user},#{total},#{time},#{detail},#{state})
+    </insert>
+    <select id="selectBookOrder" parameterType="String" resultType="BookOrder">
+        select * from book_order where user =#{username}
+    </select>
+</mapper>

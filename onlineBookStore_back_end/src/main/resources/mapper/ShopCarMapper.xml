@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.onlinebookstore.dao.ShopCarMapper" >
+    <insert id="addToShopCar"  parameterType="ShopCar">
+        insert into book_shopCar(name,goodsId,price,username,ifDelete,num) values (#{name},#{goodsId},#{price},#{username},#{ifDelete},#{num})
+    </insert>
+    <select id="countNum" parameterType="String" resultType="java.lang.Integer">
+        select count(*) from book_shopCar where username=#{username}
+    </select>
+    <select id="getList" resultType="ShopCar">
+        select * from book_shopCar where username=#{username} and ifDelete=0 limit #{begin},#{size}
+    </select>
+    <update id="removeFromShopCar">
+        update book_shopCar set ifDelete=1 where id=#{id} and username=#{username}
+    </update>
+</mapper>

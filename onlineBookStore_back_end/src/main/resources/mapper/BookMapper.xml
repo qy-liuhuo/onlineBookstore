@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.onlinebookstore.dao.BookMapper" >
+    <select id="selectAll"  resultType="Book">
+        SELECT * FROM book_list
+    </select>
+    <select id="selectBook"  resultType="Book">
+        SELECT * FROM book_list where type=#{bookType} AND name like CONCAT('%',#{keyWord},'%')
+    </select>
+    <select id="selectBookByType"  resultType="Book">
+        SELECT * FROM book_list where type=#{bookType}
+    </select>
+    <select id="selectBookByKey"  resultType="Book">
+        SELECT * FROM book_list where name like CONCAT('%',#{keyWord},'%')
+    </select>
+    <select id="selectById" resultType="Book">
+        SELECT * From book_list where id=#{id}
+    </select>
+    <update id="updateStore">
+        update book_list set store=store-1 where id=#{id};
+    </update>
+</mapper>
